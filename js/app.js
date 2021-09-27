@@ -34,7 +34,7 @@ function mostrarVacantes(vacantes) {
             const { title, platform, publisher, game_url, thumbnail, short_description } = vacante;
 
             resultado.innerHTML += `  <div class="shadow bg-white p-6 rounded">
-                    <h2 class="text-2xl font-light mb-4">${title}</h2><br>
+                    <h2 class="text-3xl font-light mb-4"><b><u>${title}</u></b></h2><br>
                     <img src="${thumbnail}">
                     <p class="font-bold uppercase">Plataforma:  <span class="font-light normal-case">${platform} </span></p>
                     <p class="font-bold uppercase">Compañia:   <span class="font-light normal-case">${publisher} </span></p>
@@ -44,8 +44,11 @@ function mostrarVacantes(vacantes) {
          })
     } else {
         const noResultado = document.createElement('p');
+        let termino = document.querySelector('#busqueda').value;
+       // termino = termino.toUpperCase()
+        resultado.classList.remove('grid');
         noResultado.classList.add('text-center', 'mt-10', 'text-gray-600', 'w-full');
-        noResultado.textContent = 'No hay resultados, intenta con otro término de búsqueda';
+        noResultado.innerHTML = `No hay resultados con el término  <b><u>${termino.toUpperCase()}</u></b>, intenta con otro término de búsqueda`;
         resultado.appendChild(noResultado)
     }
     
